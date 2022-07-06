@@ -15,11 +15,14 @@
 	<header class="site-header">
 	  <nav>
 	    <div class="header" id="myTopnav">
-	      <a class="logo" href="">Captain Vee</a>
+	      <a class="logo" href="{% url 'home' %}">Inventory App</a>
 	      <div class="" id="navbarToggle">
 	        <div>
-	          <a class="title" href="">Home</a>
-	          <a class="" href="">articles</a>
+	          <a class="title" href="{% url 'home'%}">Home</a>
+	      		<form action="/article" method="GET">
+	      			<input type="text" name="q">
+	      			<input type="submit" name="">
+	      		</form>
 
 	        </div>
 
