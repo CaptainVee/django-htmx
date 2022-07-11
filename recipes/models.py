@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from .validators import validate_unit_of_mesure
 # Create your models here.
 
 
@@ -23,4 +23,5 @@ class RecipeIngredient(models.Model):
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
     quantity = models.CharField(max_length=50)
-    unit = models.CharField(max_length=50)
+    quantity_as_float = models.CharField(max_length=50)
+    unit = models.CharField(max_length=50, validators=[validate_unit_of_mesure])

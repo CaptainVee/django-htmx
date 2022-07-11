@@ -7,3 +7,4 @@ django-crispy-forms==1.14.0
 django-dotenv==1.4.2
 gunicorn
 psycopg2-binary
+pint
