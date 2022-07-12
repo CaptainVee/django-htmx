@@ -1,2 +1,1 @@
-# try-django
-An inventory management system.
+My learnings on django-htmx

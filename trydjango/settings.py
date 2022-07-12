@@ -38,11 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # installed apps
+    'django_htmx',
+    'widget_tweaks',
+    'django_extensions',
     'crispy_forms',
     # my stuff
     'articles',
     'recipes',
+    'films'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +135,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/'
+
+AUTH_USER_MODEL = 'films.User'
