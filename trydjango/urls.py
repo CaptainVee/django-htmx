@@ -23,6 +23,7 @@ urlpatterns = [
     path('blog', include('articles.urls')),
     path('', include('films.urls')),
     path('university/', include('university.urls')),
+    path('student/', include('student.urls')),
 ]
 
 if settings.DEBUG:
