@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     # my stuff
     'articles',
     'recipes',
-    'films'
+    'films',
+    'university'
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,9 @@ STATIC_URL = 'static/'
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
 STATICFILES_DIRS = [str(BASE_DIR / "static")]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 # Default primary key field type

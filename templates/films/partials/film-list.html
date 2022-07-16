@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-between">
+<section class="col-6">
+    {% if messages %}
+    <ul class="messages" hx-get="{% url 'clear' %}" hx-trigger="load delay:3s">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if films %}
+
+        <form class=" sortable list-group col-xs-12" hx-trigger="end" hx="/sort" hx-target="#film-list">
+            <div class="htmx-indicator">Updating...</div>
+            {% for film in films %}
+            <a href="{% url 'film-details' film.pk %}">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <input type='hidden' name='film_name' value='{{ film.pk }}'/>
+                {{ film.name }}
+                <span hx-delete="{% url 'delete-film' film.pk %}" hx-target="#film-list" class="badge badge-danger" style="cursor:pointer;">X</span>
+                </li>
+            </a>
+            {% endfor %}
+        </form>
+
+    {% else %}
+        <p>You do not have any films in your list</p>
+    {% endif %}
+</section>
+
+<section>
+    {% include 'films/partials/search.html' %}
+</section>
+</div>

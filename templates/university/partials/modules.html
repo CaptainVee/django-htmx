@@ -1,0 +1,6 @@
+    <select class="custom-select mb-4">
+        <option selected> Open this to select menu</option>
+        {% for module in modules %}
+            <option value="{{ module.pk }}"> {{ module }}</option>
+        {% endfor %}
+    </select>

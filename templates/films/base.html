@@ -11,21 +11,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom CSS -->
-
-    <!-- jQuery and Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-
+        <!-- jQuery and Bootstrap CSS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- HTMX -->
      <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+
+     <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 <body>
-    {% include 'partials/navbar.html' %}
+    {% include 'films/partials/navbar.html' %}
 
-    <div class="container mt-4">
+    <div id="book" class="container mt-4">
         {% block content %}
         {% endblock %}
     </div>
@@ -33,6 +34,18 @@
     <script type="text/javascript">
         document.body.addEventListener('htmx:configRequest', (event) => {
             event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}'
+        })
+
+
+        htmx.onLoad(function(content) {
+        var sortables = content.querySelectorAll(".sortable");
+        for (var i = 0; i < sortables.length; i++) {
+          var sortable = sortables[i];
+          new Sortable(sortable, {
+              animation: 150,
+              ghostClass: 'blue-background-class'
+              });
+            }
         })
     </script>
     

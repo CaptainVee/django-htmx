@@ -1,0 +1,15 @@
+    <div>
+        {% if film.photo %}
+            <img src="{{ film.photo.url }}" width="200px" height="200px">
+        {% else %}
+            <p>No photo :(</p>
+        {% endif %}
+
+        <form method="POST" hx-encoding="multipart/form-data" hx-post="{% url 'upload-photo' film.pk %}" hx-target="#myImg">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="file" name="photo" />
+            </div>
+            <button class="btn btn-success" type="submit">Upload File</button>
+        </form>
+    </div>
